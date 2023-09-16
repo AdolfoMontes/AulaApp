@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.16.0.final using JasperReports Library version 6.16.0-48579d909b7943b64690c65c71e07e0b80981928  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="certificado_asistencia" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="6197af2e-6e0c-452f-a783-4f1ac19dadce">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Oracle"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<style name="Table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table 1_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table 1_CH" mode="Opaque" backcolor="#BDBDBD">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="Dataset1" uuid="3d12a9f8-2334-485b-ae65-0e4d95a49465">
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Oracle"/>
+		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+		<parameter name="idCurso" class="java.lang.String"/>
+		<parameter name="runAlumno" class="java.lang.String"/>
+		<queryString>
+			<![CDATA[select 
+    to_char(fecha_asistencia,'day dd "de" month "de" yyyy','nls_date_language=spanish') as fecha, 
+    case when estado = 1 then 'Presente'
+    when estado=0 then 'Ausente'
+    end as estado,
+    (select compuesto from v_cursos where v_cursos.id_curso = asistencia.id_curso ) as curso
+from asistencia where run = $P{runAlumno}   and id_curso = $P{idCurso}  ]]>
+		</queryString>
+		<field name="FECHA" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="FECHA"/>
+			<property name="com.jaspersoft.studio.field.label" value="FECHA"/>
+		</field>
+		<field name="ESTADO" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="ESTADO"/>
+			<property name="com.jaspersoft.studio.field.label" value="ESTADO"/>
+		</field>
+		<field name="CURSO" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="CURSO"/>
+			<property name="com.jaspersoft.studio.field.label" value="CURSO"/>
+		</field>
+	</subDataset>
+	<subDataset name="Dataset2" uuid="fff3093a-e64a-4eab-887b-da986c01e23c">
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Oracle"/>
+		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+		<parameter name="idCurso" class="java.lang.String"/>
+		<parameter name="runAlumno" class="java.lang.String"/>
+		<queryString>
+			<![CDATA[select 
+    to_char(fecha_asistencia,'day dd "de" month "de" yyyy','nls_date_language=spanish') as fecha, 
+    case when estado = 1 then 'Presente'
+    when estado=0 then 'Ausente'
+    end as estado,
+    (select compuesto from v_cursos where v_cursos.id_curso = asistencia.id_curso ) as curso
+from asistencia where run = $P{runAlumno}   and id_curso = $P{idCurso}  ]]>
+		</queryString>
+		<field name="FECHA" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="FECHA"/>
+			<property name="com.jaspersoft.studio.field.label" value="FECHA"/>
+		</field>
+		<field name="ESTADO" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="ESTADO"/>
+			<property name="com.jaspersoft.studio.field.label" value="ESTADO"/>
+		</field>
+		<field name="CURSO" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="CURSO"/>
+			<property name="com.jaspersoft.studio.field.label" value="CURSO"/>
+		</field>
+	</subDataset>
+	<parameter name="runAlumno" class="java.lang.Integer"/>
+	<parameter name="idCurso" class="java.lang.Integer"/>
+	<queryString>
+		<![CDATA[select (select nvl(count(id_asistencia),0) as clases_registradas  from asistencia where run= $P{runAlumno}  and id_curso= $P{idCurso} ) as clases_totales, 
+(select nvl(count(id_asistencia),1) as clases_registradas  from asistencia where run= $P{runAlumno}  and id_curso= $P{idCurso}  and estado=1) as clases_presente,
+round(((select nvl(count(id_asistencia),0) as clases_registradas  from asistencia where run= $P{runAlumno}  and id_curso= $P{idCurso}  and estado=1)/
+(select nvl(count(id_asistencia), 1) as clases_registradas  from asistencia where run= $P{runAlumno}  and id_curso= $P{idCurso} ))*100, 1) || '%'
+AS porcentaje,
+(select pri_nom ||' ' ||nvl(seg_nom, ' ') ||' ' || pri_ap ||' '|| nvl(seg_ap, ' ') from persona where run= $P{runAlumno}  ) as nombre,
+(select run ||'-' ||dv from persona where run= $P{runAlumno}  ) as RUT,
+(select nom_institucion from institucion ) as nom_institucion
+from dual]]>
+	</queryString>
+	<field name="CLASES_TOTALES" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="CLASES_TOTALES"/>
+		<property name="com.jaspersoft.studio.field.label" value="CLASES_TOTALES"/>
+	</field>
+	<field name="CLASES_PRESENTE" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="CLASES_PRESENTE"/>
+		<property name="com.jaspersoft.studio.field.label" value="CLASES_PRESENTE"/>
+	</field>
+	<field name="PORCENTAJE" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="PORCENTAJE"/>
+		<property name="com.jaspersoft.studio.field.label" value="PORCENTAJE"/>
+	</field>
+	<field name="NOMBRE" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="NOMBRE"/>
+		<property name="com.jaspersoft.studio.field.label" value="NOMBRE"/>
+	</field>
+	<field name="RUT" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="RUT"/>
+		<property name="com.jaspersoft.studio.field.label" value="RUT"/>
+	</field>
+	<field name="NOM_INSTITUCION" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="NOM_INSTITUCION"/>
+		<property name="com.jaspersoft.studio.field.label" value="NOM_INSTITUCION"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="92" splitType="Stretch">
+			<staticText>
+				<reportElement x="210" y="41" width="150" height="30" uuid="1b25bd7e-95cd-4f23-a67d-6fcc597d62df"/>
+				<textElement>
+					<font fontName="Segoe UI Light" size="14"/>
+				</textElement>
+				<text><![CDATA[Certificado de Asistencia]]></text>
+			</staticText>
+			<line>
+				<reportElement x="2" y="70" width="550" height="1" uuid="21990eb2-91d6-4d4e-8602-e658b9c1f1ee"/>
+			</line>
+			<textField pattern="MMM d, yyyy h:mm:ss a">
+				<reportElement x="410" y="0" width="144" height="20" uuid="3b6acc18-97cd-4c4d-bc20-ab473a2d4ca4"/>
+				<textElement>
+					<font fontName="Segoe UI"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<detail>
+		<band height="612" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="10" width="560" height="50" uuid="a0fb1159-f0fd-427d-a780-8651b8d1e81a"/>
+				<textElement>
+					<font fontName="Segoe UI"/>
+				</textElement>
+				<textFieldExpression><![CDATA["La institución, " + $F{NOM_INSTITUCION} + " certifica que el alumno(a) " + $F{NOMBRE} + " tiene un porcentaje de asistencia del " + $F{PORCENTAJE} + " de un total de " + $F{CLASES_TOTALES} + " clases, de las cuales ha asistido a "+$F{CLASES_PRESENTE} + "."]]></textFieldExpression>
+			</textField>
+			<componentElement>
+				<reportElement x="0" y="110" width="550" height="55" uuid="1a9e928a-8a8d-46d8-963c-8247158c793d">
+					<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
+					<property name="com.jaspersoft.studio.table.style.table_header" value="Table 1_TH"/>
+					<property name="com.jaspersoft.studio.table.style.column_header" value="Table 1_CH"/>
+					<property name="com.jaspersoft.studio.table.style.detail" value="Table 1_TD"/>
+				</reportElement>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="Dataset2" uuid="eca33f0e-d7d4-45d6-af2c-2ce41ca38cd7">
+						<datasetParameter name="idCurso">
+							<datasetParameterExpression><![CDATA[$P{idCurso}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="runAlumno">
+							<datasetParameterExpression><![CDATA[$P{runAlumno}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="270" uuid="b52eb4fa-994a-4f25-899b-8b7181d3fdc1">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column1"/>
+						<jr:columnHeader style="Table 1_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="270" height="30" uuid="643e7e25-c3fe-4d49-86de-6f1000a86822"/>
+								<textElement>
+									<font fontName="Segoe UI" size="10"/>
+								</textElement>
+								<text><![CDATA[Fecha]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table 1_TD" height="30">
+							<textField>
+								<reportElement x="0" y="0" width="270" height="30" uuid="a1000381-290b-46bc-b121-ce822d30a0e3"/>
+								<textElement>
+									<font fontName="Segoe UI" size="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{FECHA}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="160" uuid="5dabf94b-c1c3-4524-857d-638f047de339">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column2"/>
+						<jr:columnHeader style="Table 1_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="160" height="30" uuid="0ddd431b-1871-4211-b672-ca4dc507cdbf"/>
+								<textElement>
+									<font fontName="Segoe UI" size="10"/>
+								</textElement>
+								<text><![CDATA[Estado]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table 1_TD" height="30">
+							<textField>
+								<reportElement x="0" y="0" width="160" height="30" uuid="2da2d9ef-7dcb-412e-81d6-7da4b495785c"/>
+								<textElement>
+									<font fontName="Segoe UI" size="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{ESTADO}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="120" uuid="cf69aa8e-4c2e-4d40-9b2d-9eedd5ef32e6">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column3"/>
+						<jr:columnHeader style="Table 1_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="120" height="30" uuid="403ed84e-b16f-4612-af60-0d3425852ab9"/>
+								<textElement>
+									<font fontName="Segoe UI" size="10"/>
+								</textElement>
+								<text><![CDATA[Curso]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table 1_TD" height="30">
+							<textField>
+								<reportElement x="0" y="0" width="120" height="30" uuid="e65e6b5c-8b51-42de-a639-932f4f808237"/>
+								<textElement>
+									<font fontName="Segoe UI" size="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{CURSO}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<staticText>
+				<reportElement x="0" y="70" width="240" height="20" uuid="46469601-6911-40d2-ab24-7e5afa645e5e"/>
+				<textElement>
+					<font fontName="Segoe UI"/>
+				</textElement>
+				<text><![CDATA[El detalle es el siguiente:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="580" width="550" height="20" uuid="67ebcb80-685b-4375-bfc7-7c8d085c4f77"/>
+				<textElement>
+					<font fontName="Segoe UI" size="10"/>
+				</textElement>
+				<text><![CDATA[Se extiende el presente certificado para los fines que estime convenientes.]]></text>
+			</staticText>
+			<line>
+				<reportElement x="220" y="540" width="120" height="1" uuid="ec48f713-1605-4cde-bb17-cb2e0fe95a22"/>
+			</line>
+			<staticText>
+				<reportElement x="230" y="550" width="93" height="18" uuid="31043031-2e46-435f-8cfe-67d2f1c70edf"/>
+				<text><![CDATA[Firma Responsable]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="94" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="20" width="180" height="17" uuid="f5010b5b-6d4c-4dc8-96da-8819d661e4b9"/>
+				<textElement>
+					<font fontName="Segoe UI" size="9"/>
+				</textElement>
+				<text><![CDATA[Documento generado por AulaApp]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="180" y="60" width="100" height="30" uuid="1c9881ae-9a2a-4a9e-8449-4c9c918997b7"/>
+				<textElement textAlignment="Right">
+					<font fontName="Segoe UI" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Página  " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="280" y="60" width="100" height="30" uuid="ee1c972c-7b63-4b78-801a-7d45876d25ce"/>
+				<textElement textAlignment="Left">
+					<font fontName="Segoe UI" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" de " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>
