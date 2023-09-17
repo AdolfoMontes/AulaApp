@@ -1,0 +1,93 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-title class="titleIngresarNotas" style="text-align: right; font-size: 20px;">Ingresar Notas</ion-title>
+    <ion-buttons slot="start" >
+      <ion-back-button defaultHref="/" color="light" mode="md">
+
+      </ion-back-button>
+    </ion-buttons>
+    <ion-thumbnail slot="end" style="padding-top: 8px; padding-right: 8px;">
+      <ion-icon name="stats-chart" size="large" color="primary"></ion-icon>
+    </ion-thumbnail>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="bg">
+  <ion-card class="bgIngresarNotas rounded">
+
+    <ion-item class="ion-margin rounded" *ngIf="mostrarNivel">  
+      <ion-label>Nivel</ion-label>
+      <ion-select name ="select_nivel" [(ngModel)]="mdl_nivel" (ionChange)="onChange(obtenerCursoApi())" >
+        <ion-select-option *ngFor="let nivel of listaNivel" [value]="nivel.ID_NIVEL">{{nivel.DESCRIPCION}} </ion-select-option>
+      </ion-select>
+      
+    </ion-item>
+    
+    <ion-item class="ion-margin rounded" *ngIf="mostrarCurso">
+      <ion-label>Curso</ion-label>
+      <ion-select name ="select_curso" [(ngModel)]="mdl_curso" (ionChange)="onChange(obtenerAsignaturaApi())" >
+        <ion-select-option *ngFor="let curso of listaCursos" [value]="curso.ID_CURSO">{{curso.COMPUESTO}}</ion-select-option>
+      </ion-select>  
+    </ion-item>
+
+    <ion-item class="ion-margin rounded" *ngIf="mostrarAsignatura">
+      <ion-label>Asignatura</ion-label>
+      <ion-select [(ngModel)]="mdl_asignatura" (ionChange)="onChange(obtenerAlumnosApi())">
+        <ion-select-option *ngFor="let atrib of listaAsignatura" [value]="atrib.ID_ASIGNATURA">{{atrib.NOM_ASIGNATURA}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item class="ion-margin rounded" *ngIf="mostrarAlumno">
+      <ion-label>Alumno</ion-label>
+      <ion-select name ="select_alumno" [(ngModel)]="mdl_alumno" (ionChange)="onChange(mdl_alumno)">
+        <ion-select-option *ngFor="let alumno of listaAlumnos" [value]="alumno.RUN">{{alumno.NOMBREALUMNO}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+  
+    <ion-item class="ion-margin rounded" *ngIf="mostrarPeriodo">
+      <ion-label>Periodo</ion-label>
+      <ion-select name ="select_periodo" [(ngModel)]="mdl_periodo" (ionChange)="onChange(mostrarNotasCard()) ">
+        <ion-select-option *ngFor="let periodo of listaPeriodo">{{periodo.semestre}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-card>
+
+  <ion-card *ngIf="mostrarNotas" style="color:black">   
+    <ion-label class="ion-padding" position="stacked"><h2>Digite las Notas</h2></ion-label>
+
+    <ion-item>
+      <ion-input [(ngModel)]="notasForm.nota1" type="number" placeholder="Nota 1" (keypress)="maxDigitos($event)"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input [(ngModel)]="notasForm.nota2" type="number" placeholder="Nota 2"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input [(ngModel)]="notasForm.nota3" type="number" placeholder="Nota 3"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input [(ngModel)]="notasForm.nota4" type="number" placeholder="Nota 4"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input [(ngModel)]="notasForm.nota5" type="number" placeholder="Nota 5"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input [(ngModel)]="notasForm.nota6" type="number" placeholder="Nota 6"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input [(ngModel)]="notasForm.nota7" type="number" placeholder="Nota 7"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input [(ngModel)]="notasForm.nota8" type="number" placeholder="Nota 8"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input [(ngModel)]="notasForm.nota9" type="number" placeholder="Nota 9"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input [(ngModel)]="notasForm.nota10" type="number" placeholder="Nota 10"></ion-input>
+    </ion-item>
+
+  </ion-card>
+  <ion-button expand="full" shape="round" class="ion-margin" strong="true" (click)="ingresarNotas()" color="success" [disabled]="isEnabled">Ingresar notas</ion-button>
+</ion-content>

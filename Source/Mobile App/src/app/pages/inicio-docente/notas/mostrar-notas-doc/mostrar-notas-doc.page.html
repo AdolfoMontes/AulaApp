@@ -1,0 +1,91 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <img (click)="irInicioDocente()" class="rounded" src="/assets/icon/logoAulaapp.png" width="50" height="50" slot="start" >
+    <ion-title slot="start" class="ion-margin titleMostrarNotas" style="font-size: 20px;">NOTAS <ion-icon name="stats-chart" size="large" color="primary"></ion-icon></ion-title>
+    <ion-button (click)="refresh()"slot="end" fill="solid" color="dark">
+      <ion-icon style="text-align:right;" name="refresh-outline"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content class="bg">
+  <ion-card class="bgMostrarNotas rounded">
+
+
+    <ion-item class="ion-margin rounded" *ngIf="mostrarAlumno">
+      <ion-label>Alumno</ion-label>
+      <ion-select class="select" cancelText="Cancelar" okText="Aceptar" name ="select_alumno" [(ngModel)]="mdl_alumno" (ionChange)="onChangeAlum()">
+        <ion-select-option *ngFor="let alumno of listaAlumnos" [value]="alumno.RUN">{{alumno.NOMBREALUMNO}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+  
+    <ion-item class="ion-margin rounded" *ngIf="mostrarPeriodo">
+      <ion-label>Periodo</ion-label>
+      <ion-select class="select" cancelText="Cancelar" okText="Aceptar" name ="select_periodo" [(ngModel)]="mdl_periodo" (ionChange)="onChangePer() ">
+        <ion-select-option *ngFor="let periodo of listaPeriodo">{{periodo.semestre}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-card>
+
+  <ion-item>
+    <ion-button expand="block" shape="round" class="ion-margin" strong="true" (click)="estaAsignatura()" color="primary" [disabled]="isDisabledThis">ESTA ASIGNATURA</ion-button><ion-button expand="block" shape="round" class="ion-margin-left" strong="true" (click)="todasAsignaturas()" color="secondary" [disabled]="isDisabledAll">TODAS LAS NOTAS</ion-button>
+  </ion-item>
+    
+    <ion-card *ngIf="mostrarNotas" class="bgMostrarNotas rounded">
+    <ion-accordion-group class="ion-margin" *ngFor="let nota of listaNotas">
+      <ion-accordion value="colors" toggle-icon="arrow-down-circle">
+                
+        <ion-item slot="header">
+          <ion-label><b>{{nota.NOM_ASIGNATURA}}</b></ion-label>
+        </ion-item>
+        
+        <ion-list slot="content">
+          <ion-item>
+            <ion-label color="dark" class="ion-text-center"><b>Nota 1 → </b> {{nota.N1 | number: '1.0-2'}}{{nota.N11 | number: '1.0-2'}}</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label color="dark" class="ion-text-center"><b>Nota 2 → </b>{{nota.N2 | number: '1.0-2'}}{{nota.N12 | number: '1.0-2'}}</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label color="dark" class="ion-text-center"><b>Nota 3 → </b>{{nota.N3  | number: '1.0-2'}}{{nota.N13 | number: '1.0-2'}}</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label color="dark" class="ion-text-center"><b>Nota 4 → </b>{{nota.N4 | number: '1.0-2'}}{{nota.N14 | number: '1.0-2'}}</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label color="dark" class="ion-text-center"><b>Nota 5 → </b>{{nota.N5 | number: '1.0-2'}}{{nota.N15 | number: '1.0-2'}}</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label color="dark" class="ion-text-center"><b>Nota 6 → </b>{{nota.N6 | number: '1.0-2'}}{{nota.N16 | number: '1.0-2'}}</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label color="dark" class="ion-text-center"><b>Nota 7 → </b>{{nota.N7 | number: '1.0-2'}}{{nota.N17 | number: '1.0-2'}}</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label color="dark" class="ion-text-center"><b>Nota 8 → </b>{{nota.N8 | number: '1.0-2'}}{{nota.N18 | number: '1.0-2'}}</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label color="dark" class="ion-text-center"><b>Nota 9 → </b>{{nota.N9 | number: '1.0-2'}}{{nota.N18 | number: '1.0-2'}}</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label color="dark" class="ion-text-center"><b>Nota 10 → </b>{{nota.N10 | number: '1.0-2'}}{{nota.N20 | number: '1.0-2'}}</ion-label>
+          </ion-item>
+        </ion-list>
+        
+      </ion-accordion>
+    </ion-accordion-group> 
+
+  </ion-card>
+  
+  <!-- <ion-button expand="full" shape="round" class="ion-margin" strong="true" (click)="obtenerNotas()" [disabled]="isEnable" color="success">Obtener notas</ion-button> -->
+
+  <ion-button expand="block" shape="round" class="botonAtras" color="tertiary" (click)="atras()">Atrás</ion-button>
+  <div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    </div>
+</ion-content>

@@ -1,0 +1,13 @@
+CREATE OR REPLACE VIEW V_LECCIONARIO AS
+SELECT LEC.DESCRIPCION AS descripcionLeccion,
+    TO_CHAR(LEC.FECHA,'dd-MM-yyyy') AS fechaLeccion,
+    LEC.FECHA_CREACION AS fechaCreacion,
+    LEC.USUARIO_CRE AS usuarioCreacion,
+    LEC.ID_ASIGNATURA AS idAsignatura,
+    ASI.NOM_ASIGNATURA AS nombreAsignatura,
+    ASI.COD_ASIGNATURA AS codigoAsignatura,
+    ASI.ANIO AS AnioAsignatura,
+    ASI.ID_CURSO AS idCurso,
+    ASI.DOC_ASIGNADO AS docenteAsignatura
+FROM LECCIONARIO LEC JOIN ASIGNATURA ASI ON ASI.ID_ASIGNATURA = LEC.ID_ASIGNATURA
+;

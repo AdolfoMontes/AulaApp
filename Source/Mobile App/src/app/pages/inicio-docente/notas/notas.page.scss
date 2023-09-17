@@ -1,0 +1,16 @@
+.bgNotas{
+    background: rgb(245,139,0);
+background: linear-gradient(180deg, rgba(245,139,0,0.7679446778711485) 32%, rgba(228,209,81,0.8407738095238095) 99%);
+}
+
+.rounded{
+    border-radius: 10px !important;  
+}
+
+.bg{
+    --ion-background-color: #f8e7cd;
+}
+.titleNotas{
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: #fcae49;
+}

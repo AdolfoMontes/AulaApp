@@ -1,0 +1,87 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-title class="ion-margin titleMain" style="text-align:left; font-size: 20px;">MENÚ</ion-title>
+    <img (click)="irInicioDocente()" class="rounded" src="/assets/icon/logoAulaapp.png" width="50" height="50" slot="start" >
+    <ion-button (click)="refresh()"slot="end" fill="solid" color="dark">
+
+      <ion-icon  style="text-align:right;" name="refresh-outline"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="bg">
+    <ion-card class="apps-card bgMain rounded">
+       
+    <ion-card-header class="bgHeader">
+      <!-- TITULO CURSOS -->
+      <!-- <ion-card-subtitle>hola</ion-card-subtitle> -->
+      <div class="ion-margin rounded lblHeader">
+        <ion-label class="lblHeader" *ngFor= "let x of listaCurso"><b>{{x.COMPUESTO}}</b></ion-label>
+      </div>
+
+      <!-- TITULO ASIGNATURAS -->
+      <div class="ion-margin rounded lblHeader" *ngIf="mostrarLabelAsignatura">
+        <ion-label class="lblHeader" *ngFor= "let x of infoAsignatura"><b>{{x.NOM_ASIGNATURA}} <br><i>{{x.COMPUESTO}}</i></b></ion-label>
+      </div>
+    
+    </ion-card-header>
+     
+      <!--METODO ASISTENCIA  -->
+      <ion-card-content class="ion-margin">
+        <ion-list class="rounded">
+          <ion-item detail button (click)="irAsistencia()" *ngIf="mostrarAsistencia">
+            <ion-thumbnail slot="start" style="padding-top: 8px;">
+            <ion-icon name="checkmark" size="large" color="success"></ion-icon>
+          </ion-thumbnail>
+          <ion-card-title>
+            Asistencia            
+          </ion-card-title>
+        </ion-item>
+        
+        <!--METODO LECCIONARIO  -->
+        <ion-item detail button (click)="irLeccionario()" *ngIf="mostrarLeccionario">
+          <ion-thumbnail slot="start" style="padding-top: 8px;">
+            <ion-icon name="pencil" size="large" color="warning"></ion-icon>
+          </ion-thumbnail>
+          <ion-card-title>
+            Leccionario
+          </ion-card-title>
+        </ion-item>
+        
+        <!--METODO OBSERVACIONES  -->
+        <ion-item detail button (click)="irHojaDeVida()" *ngIf="mostrarHdv">
+          <ion-thumbnail slot="start" style="padding-top: 8px;">
+            <ion-icon name="newspaper" size="large" color="medium"></ion-icon>
+          </ion-thumbnail>
+          <ion-card-title>
+            Hoja de Vida
+          </ion-card-title>
+        </ion-item>
+        
+        <!--METODO NOTAS  -->
+        <ion-item detail button (click)="irNotas()" *ngIf="mostrarNotas">
+          <ion-thumbnail slot="start" style="padding-top: 8px;">
+            <ion-icon name="stats-chart" size="large" color="primary"></ion-icon>
+          </ion-thumbnail>
+          <ion-card-title>
+            Notas
+          </ion-card-title>
+        </ion-item>
+        
+        <!--METODO HORARIOS  -->
+        <ion-item detail button (click)="irHorarios()">
+          <ion-thumbnail slot="start" style="padding-top: 8px;">
+            <ion-icon name="alarm" size="large" color="secondary"></ion-icon>
+          </ion-thumbnail>
+          <ion-card-title>
+            Horarios
+          </ion-card-title>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+  <ion-button expand="block" id="modal-alumnos" shape="round" class="botonAtras" color="tertiary" (click)="atras()">atrás</ion-button>
+
+
+
+</ion-content>

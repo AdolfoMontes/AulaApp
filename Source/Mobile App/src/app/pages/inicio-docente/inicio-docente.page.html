@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-title class="titleInicioDocente" style="text-align:left; font-size: 20px;">INICIO</ion-title>
+    <img class="rounded"src="/assets/icon/logoAulaapp.png" width="50" height="50" slot="start" >
+
+      <ion-button (click)="refresh()"slot="end" fill="solid" color="dark">
+
+        <ion-icon  style="text-align:right;" name="refresh-outline"></ion-icon>
+      </ion-button>
+
+  </ion-toolbar>
+  
+</ion-header>
+
+<ion-content class="bg">
+  <ion-chip class="ion-margin" (click)="mostrarPerfilUsuario()">
+    <ion-avatar>
+      <ion-icon name="person" size="large" color="medium"></ion-icon>
+    </ion-avatar>
+    <ion-label  *ngFor= "let x of lista">{{x.nombreCompleto}}</ion-label>
+  </ion-chip >
+  <ion-card-header>
+    <ion-card-title style="text-align: center; " *ngFor= "let x of lista">Bienvenid@ <b>{{x.codigoUsuario}}</b></ion-card-title>
+  </ion-card-header>
+
+  <ion-card class=" apps-card bgInicioDocente rounded">
+
+    <!-- TARJETA CURSOS -->
+    <ion-card-content *ngIf="mostrarCurso">
+      <ion-card>
+        <ion-img src="/assets/icon/icons8-cursos-64.png" class="logo" ></ion-img>
+        <ion-item class=" rounded">
+          <ion-label class="color">Cursos</ion-label>
+          <ion-select cancelText="Cancelar" okText="Aceptar" name ="select_curso" [(ngModel)]="mdl_curso" (ionChange)="onChangeCur(mdl_curso)" class="select">
+          <!-- <ion-select cancelText="Cancelar" okText="Aceptar" name ="select_curso" [(ngModel)]="mdl_curso" (ionChange)="onChange(obtenerCursoDocente())"> -->
+            <ion-select-option *ngFor="let curso of listaCursos" [value]="curso.ID_CURSO"  >{{curso.COMPUESTO}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <!-- <ion-button expand="full" shape="round" (click)= "limpiarCur()" class="ion-margin" strong="true" [disabled]="isDisableCursos" color="success">IR</ion-button> -->
+      </ion-card>
+    </ion-card-content>
+  </ion-card>
+  
+  <!-- TARJETA ASIGNATURAS -->
+  <ion-card  class="apps-card bgInicioDocente rounded">
+    <ion-card-content *ngIf="mostrarAsignatura">
+      <ion-card>
+        <ion-img src="/assets/icon/icons8-cursos-48.png" class="logo" ></ion-img>
+        <ion-item class="rounded">
+          <ion-label class="color">Asignaturas</ion-label>
+          <ion-select cancelText="Cancelar" okText="Aceptar" name ="select_asignatura" [(ngModel)]="mdl_asignatura" (ionChange)="onChangeAsig(mdl_asignatura)"  class="select">
+            <ion-select-option *ngFor="let asignatura of listaAsignatura" [value]="asignatura.ID_ASIGNATURA" >{{asignatura.COD_ASIGNATURA}} / {{asignatura.COMPUESTO}}</ion-select-option>
+          </ion-select>
+        </ion-item> 
+        <!-- <ion-button expand="full" shape="round" (click)= "irAsignaturas()" class="ion-margin" strong="true" [disabled]="isDisableAsignaturas" color="success">IR</ion-button> -->
+      </ion-card>
+
+
+    </ion-card-content>
+  </ion-card>
+  <!-- <ion-button expand="full" shape="round" (click)= "irMenuDocente()" class="ion-margin" strong="true" [disabled]="isEnable" color="success">Aceptar</ion-button> -->
+</ion-content>

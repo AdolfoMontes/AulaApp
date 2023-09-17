@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <img (click)="irInicioDocente()"class="rounded" src="/assets/icon/logoAulaapp.png" width="50" height="50" slot="start" >
+    <ion-title slot="start" class="titleAsistenciaAlumnos" style="font-size: 20px;">Ingresar Asistencia  <ion-icon name="checkmark" size="large" color="success"></ion-icon></ion-title>
+    <ion-button (click)="refresh()" slot="end" fill="solid" color="dark">
+      <ion-icon  style="text-align:right;" name="refresh-outline"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="bg">
+  <ion-card class="rounded">
+    <ion-list lines="full" class="ion-margin bgAsistenciaAlumnos">
+      <ion-item *ngFor="let x of listaAsistencia" class="ion-margin rounded">  
+          <ion-label class="ion-text-wrap" color="tertiary">{{x.NOMBREALUMNO}}</ion-label>              
+          <ion-input type="checkbox" slot="end">
+            <ion-label class="ion-margin">Presente</ion-label>
+            <ion-checkbox [(ngModel)]="x.PRESENTE" (ionChange)="asistenciaAlumnoCambiada()" color="success"></ion-checkbox>
+          </ion-input>     
+    </ion-item>
+  </ion-list>
+
+</ion-card>
+  
+  
+    <ion-button expand="block" id="modal-alumnos" shape="round" class="ion-margin" color="success" (click)="confirmarAsistencia()">Confirmar Asistencia</ion-button>
+
+    <ion-button expand="block" shape="round" class="botonAtras" color="tertiary" (click)="atras()">Atrás</ion-button>
+    
+
+</ion-content>

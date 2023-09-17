@@ -1,0 +1,37 @@
+
+<ion-header>
+  <ion-toolbar>
+    <ion-title class="rounded" style="padding: 0;background-color: black;">
+        <ion-img class="boton" src="\assets\image\logo2.png" style="width: 50%;margin: auto;">  </ion-img>
+        <h1 style="font-family: Arial;text-align: center;font-size: 40px; color:aliceblue"> AulaApp</h1>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="bg">
+ 
+  <ion-card class="ion-margin bgLogin">
+    <ion-card-header>
+    <ion-card-title class="title">Inicio de sesión</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+
+      <ion-item class="ion-margin rounded">
+        
+        <ion-label position="floating" color="primary">Usuario(RUN sin punto ni guión)</ion-label>
+        <ion-input type="number" [(ngModel)]="usuarioForm.run" required  number></ion-input>
+      </ion-item>
+
+      <ion-item class="ion-margin rounded">
+        <ion-label position="floating" color="primary">Contraseña</ion-label>
+        <ion-input type="password" maxlength="25" [(ngModel)]="usuarioForm.password" required digits></ion-input>
+      </ion-item>   
+    </ion-card-content>
+
+    
+    <ion-button expand="full" color="tertiary" shape="round" size="large" class="pulse ion-margin" (click)="validarLogin()" > <ion-icon name="log-in-outline" slot="start"></ion-icon>Ingresar</ion-button>
+    <ion-button expand="full" color="medium" shape="round" fill="solid" size="default"  (click)="recuperarContrasena()" class="pulse ion-margin"  >Recuperar contraseña</ion-button>
+    <br><p> v1.0 - Prototipo</p>
+  </ion-card>
+
+</ion-content>

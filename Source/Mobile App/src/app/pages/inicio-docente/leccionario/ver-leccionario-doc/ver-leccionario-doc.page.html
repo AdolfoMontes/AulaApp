@@ -1,0 +1,69 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <img (click)="irInicioDocente()" class="rounded" src="/assets/icon/logoAulaapp.png" width="50" height="50" slot="start" >
+    <ion-title slot="start" class="titleVerLeccionario" style="font-size: 20px;">Ver Leccionario <ion-icon name="pencil-sharp" size="large" color="warning"></ion-icon></ion-title>
+    <ion-button (click)="refresh()"slot="end" fill="solid" color="dark">
+      <ion-icon style="text-align:right;" name="refresh-outline"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+
+
+<ion-content class="bg">
+  <ion-card class="bgVerLeccionario rounded">
+    
+
+
+        <ion-grid class="ion-text-center">
+
+          <ion-row class="ion-margin">
+            <ion-col>
+              <ion-title>
+                <ion-text color="default" *ngFor="let x of leccionario">
+                  {{x.NOMBREASIGNATURA}}
+                </ion-text><br>
+                <ion-label *ngFor="let x of listaLeccionario">{{x.NOM_ASIGNATURA}}</ion-label>
+              </ion-title>
+            </ion-col>
+          </ion-row>
+      
+          <ion-row class="header-row" >
+            <ion-col>
+              <ion-text><b>Nombre Asignatura</b></ion-text>
+            </ion-col>
+      
+            <ion-col>
+              <ion-text><b>Fecha</b></ion-text>
+            </ion-col>
+            <ion-col>
+              <ion-text><b>Descripción</b></ion-text>
+            </ion-col>
+            
+          </ion-row>
+
+          <ion-row *ngFor="let x of listaLeccionario">
+            <ion-col class="ion-text-center">
+              <ion-text >
+                  {{x.NOMBREASIGNATURA}}
+              </ion-text>
+            </ion-col>
+        
+              <ion-col class="ion-text-center"> 
+                <ion-text >
+                  {{x.FECHALECCION}}
+                </ion-text>
+              </ion-col>
+              <ion-col class="ion-text-center"> 
+                <ion-text >
+                  {{x.DESCRIPCIONLECCION}}
+                </ion-text>
+              </ion-col>
+
+          </ion-row>  
+        </ion-grid>
+        
+      </ion-card>
+      <ion-button expand="block" shape="round" class="botonAtras" color="tertiary" (click)="atras()">Atrás</ion-button>
+
+</ion-content>

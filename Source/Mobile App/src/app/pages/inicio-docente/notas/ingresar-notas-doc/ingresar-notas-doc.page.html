@@ -1,0 +1,93 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <img (click)="irInicioDocente()" class="rounded" src="/assets/icon/logoAulaapp.png" width="50" height="50" slot="start" >
+    <ion-title slot="start" class="ion-margin titleIngresarNotas" style="font-size: 20px;">INGRESAR NOTAS <ion-icon name="stats-chart" size="large" color="primary"></ion-icon></ion-title>
+    <ion-button (click)="refresh()"slot="end" fill="solid" color="dark">
+      <ion-icon style="text-align:right;" name="refresh-outline"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="bg">
+  <ion-card class="bgIngresarNotas rounded">
+    <ion-card-subtitle class="ion-margin lblNotas">Seleccione un/a alumn@</ion-card-subtitle>
+    <!-- SELECCIONAR ALUMNO -->
+    <ion-item class="ion-margin rounded" *ngIf="mostrarAlumno">
+      <ion-label>Alumno</ion-label>
+      <ion-select class="select" cancelText="Cancelar" okText="Aceptar" name ="select_alumno" [(ngModel)]="mdl_alumno" (ionChange)="onChangeAlum()">
+        <ion-select-option *ngFor="let alumno of listaAlumnos" [value]="alumno.RUN">{{alumno.NOMBREALUMNO}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+    
+    
+    <!-- SELECCIONAR PERIODO(SEMESTRE) -->
+    <ion-item class="ion-margin rounded" *ngIf="mostrarPeriodo">
+      <ion-label>Período</ion-label>
+      <ion-select  cancelText="Cancelar" okText="Aceptar" name ="select_periodo" [(ngModel)]="mdl_periodo" (ionChange)="onChangePer()">
+        <ion-select-option *ngFor="let periodo of listaPeriodo">{{periodo.semestre}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-card>
+  
+  <ion-button size="small" fill="solid" color="secondary" (click)="limpiarNotas()" *ngIf="mostrarLimpiar">Limpiar</ion-button>
+  <ion-card class="bgCardNotas rounded" *ngIf="mostrarNotas"><br>
+    <ion-label class="ion-margin ion-text-center ion-padding ion lblNotas">Digite las Notas</ion-label><br>
+    <ion-card-content>
+      <ion-text>Ingrese la nota con una coma (EJ: 6,2)</ion-text>
+    <ion-item class="ion-margin rounded">
+      <ion-label position="fixed" color="dark" class="ion-text-center"><b>Nota 1 → </b></ion-label>
+      <ion-input [(ngModel)]="notasForm.nota1" type="number" placeholder="Nota 1" (keypress)="maxDigitos1($event)"></ion-input>
+    </ion-item>
+
+    <ion-item class="ion-margin rounded">
+      <ion-label position="fixed" color="dark" class="ion-text-center"><b>Nota 2 → </b></ion-label>
+      <ion-input [(ngModel)]="notasForm.nota2" type="number" placeholder="Nota 2" (keypress)="maxDigitos2($event)"></ion-input>
+    </ion-item>
+
+    <ion-item class="ion-margin rounded">
+      <ion-label position="fixed" color="dark" class="ion-text-center"><b>Nota 3 → </b></ion-label>
+      <ion-input [(ngModel)]="notasForm.nota3" type="number" placeholder="Nota 3" (keypress)="maxDigitos3($event)"></ion-input>
+    </ion-item>
+
+    <ion-item class="ion-margin rounded">
+      <ion-label position="fixed" color="dark" class="ion-text-center"><b>Nota 4 → </b></ion-label>
+      <ion-input [(ngModel)]="notasForm.nota4" type="number" placeholder="Nota 4" (keypress)="maxDigitos4($event)"></ion-input>
+    </ion-item>
+
+    <ion-item class="ion-margin rounded">
+      <ion-label position="fixed" color="dark" class="ion-text-center"><b>Nota 5 → </b></ion-label>
+      <ion-input [(ngModel)]="notasForm.nota5" type="number" placeholder="Nota 5" (keypress)="maxDigitos5($event)"></ion-input>
+    </ion-item>
+
+    <ion-item class="ion-margin rounded">
+      <ion-label position="fixed" color="dark" class="ion-text-center"><b>Nota 6 → </b></ion-label>
+      <ion-input [(ngModel)]="notasForm.nota6" type="number" placeholder="Nota 6" (keypress)="maxDigitos6($event)"></ion-input>
+    </ion-item>
+
+    <ion-item class="ion-margin rounded">
+      <ion-label position="fixed" color="dark" class="ion-text-center"><b>Nota 7 → </b></ion-label>
+      <ion-input [(ngModel)]="notasForm.nota7" type="number" placeholder="Nota 7" (keypress)="maxDigitos7($event)"></ion-input>
+    </ion-item>
+
+    <ion-item class="ion-margin rounded">
+      <ion-label position="fixed" color="dark" class="ion-text-center"><b>Nota 8 → </b></ion-label>
+      <ion-input [(ngModel)]="notasForm.nota8" type="number" placeholder="Nota 8" (keypress)="maxDigitos8($event)"></ion-input>
+    </ion-item>
+
+    <ion-item class="ion-margin rounded">
+      <ion-label position="fixed" color="dark" class="ion-text-center"><b>Nota 9 → </b></ion-label>
+      <ion-input [(ngModel)]="notasForm.nota9" type="number" placeholder="Nota 9" (keypress)="maxDigitos9($event)"></ion-input>
+    </ion-item>
+
+    <ion-item class="ion-margin rounded">
+      <ion-label position="fixed" color="dark" class="ion-text-center"><b>Nota 10 → </b></ion-label>
+      <ion-input [(ngModel)]="notasForm.nota10" type="number" placeholder="Nota 10" (keypress)="maxDigitos10($event)"></ion-input>
+    </ion-item>
+
+    </ion-card-content>   
+
+  </ion-card>
+  <ion-button expand="full" shape="round" class="ion-margin" (click)="ingresarNotas()" color="success" [disabled]="isDisabled">Ingresar notas</ion-button>
+  <ion-button expand="block" shape="round" class="botonAtras" color="tertiary" (click)="atras()">Atrás</ion-button>
+
+</ion-content>

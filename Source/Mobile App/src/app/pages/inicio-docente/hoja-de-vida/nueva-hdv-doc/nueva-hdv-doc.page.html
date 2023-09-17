@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <img (click)="irInicioDocente()" class="rounded" src="/assets/icon/logoAulaapp.png" width="50" height="50" slot="start" >
+    <ion-title slot="start" class="titleNuevaHdv" style="font-size: 20px;">Nueva Observación <ion-icon name="newspaper" size="large" color="medium"></ion-icon></ion-title>
+    <ion-button (click)="refresh()"slot="end" fill="solid" color="dark">
+      <ion-icon  style="text-align:right;" name="refresh-outline"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="bg">
+
+  <ion-card class="bgNuevaHdv rounded">
+
+
+
+    <ion-item class="ion-margin rounded" *ngIf="mostrarAlumno">
+      <ion-label>Alumno</ion-label>
+      <ion-select class="select" cancelText="Cancelar" okText="Aceptar" name ="select_alumno" [(ngModel)]="mdl_alumno" (ionChange)="onChangeAlumno()">
+        <ion-select-option *ngFor="let atrib of listaObservacion" [value]="atrib.RUN" >{{atrib.NOMBREALUMNO}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+
+    <ion-item class="ion-margin rounded" *ngIf="mostrarTipo">
+      <ion-label class="ion-text-wrap">Tipo de Observación:</ion-label>              
+      <div> 
+        <div float-right class="my-checkbox" >
+          <ion-item >
+            <ion-input type="checkbox" slot="end">
+              <ion-label class="ion-margin">Positiva</ion-label>
+              <ion-checkbox slot="end" [(ngModel)]="box_positiva" name="checkbox" (ionChange)="actualizaPositiva()"></ion-checkbox>
+            </ion-input>
+          </ion-item>
+        </div>
+        <div float-right class="my-checkbox">
+          <ion-item>
+            <ion-input type="checkbox" slot="end">
+              <ion-label class="ion-margin">Negativa</ion-label>
+              <ion-checkbox slot="end" [(ngModel)]="box_negativa" name="checkbox"(ionChange)="actualizaNegativa()"></ion-checkbox>
+            </ion-input>
+          </ion-item>
+        </div>
+       
+      </div>
+    </ion-item>
+
+    <ion-item class="ion-margin rounded" *ngIf="mostrarObservacion">
+      <ion-label position="stacked">Observación estudiante</ion-label>
+      <ion-textarea placeholder="EJ: MAT001 - Descripcion de la observación..." [(ngModel)]="txt_observacion" (ionChange)="entradaObservacion()"></ion-textarea>
+    </ion-item>
+
+    
+
+
+    
+  </ion-card>
+  <ion-button expand="full" shape="round" class="ion-margin" (click)="confirmarObservacion()" color="success" [disabled]="isDisableConf">Confirmar</ion-button>
+  
+  <ion-button expand="block" shape="round" class="botonAtras" color="tertiary" (click)="atras()">Atrás</ion-button>
+
+</ion-content>

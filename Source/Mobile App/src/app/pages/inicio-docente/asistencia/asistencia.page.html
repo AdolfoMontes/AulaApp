@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <img (click)="irInicioDocente()" class="rounded" src="/assets/icon/logoAulaapp.png" width="50" height="50" slot="start">
+    <ion-title slot="start" class="ion-margin titleAsistencia" style="font-size: 20px;">Asistencia <ion-icon name="checkmark" size="large" color="success"></ion-icon></ion-title>
+    <ion-button (click)="refresh()"slot="end" fill="solid" color="dark">
+      <ion-icon  style="text-align:right;" name="refresh-outline"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content class="bg">
+  
+  <ion-card class="bgAsistencia rounded">
+    <ion-item id="open-modal" class="ion-margin rounded" detail>
+      <ion-icon color="tertiary" icon="calendar-outline" slot ="start"></ion-icon>
+      <ion-label>Fecha</ion-label>
+      <ion-text slot="end">{{formato}}</ion-text>
+    </ion-item>
+  
+    <ion-modal trigger="open-modal" class="ion-margin rounded ion-modal bg">
+      <ng-template>
+        <ion-content class="ion-content-fecha">
+          <ion-datetime color="tertiary" #datetime presentation="datetime" [value]="dateValue" size="cover"(ionChange)="fechaCambiada(dateValue)"(ionCancel)="mostrarPickerFecha = false;">
+            <ion-buttons slot="buttons">
+              <ion-button (click)="cerrar()" color="danger">Cerrar</ion-button>
+              <ion-button (click)="seleccionar()">Seleccionar</ion-button>
+            </ion-buttons>
+          </ion-datetime>
+        </ion-content>
+      </ng-template>
+    </ion-modal>
+    <ion-button [disabled]="isDisableIn" expand="block" shape="round" class="ion-margin" color="success" (click)="ingresarAsistencia()">Ingresar Asistencia</ion-button>
+    <ion-button [disabled]="isDisableVer" expand="block" shape="round" class="ion-margin" color="warning" (click)="verAsistencia()">Ver Asistencia</ion-button>
+
+  </ion-card>
+  <ion-button expand="block" shape="round" class="botonAtras" color="tertiary" (click)="atras()">Atrás</ion-button>
+</ion-content>

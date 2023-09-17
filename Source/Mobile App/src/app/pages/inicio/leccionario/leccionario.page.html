@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-title class="titleLeccionario" style="text-align: right; font-size:20px">Leccionario</ion-title>
+    <ion-buttons slot="start" >
+      <ion-back-button defaultHref="/" color="light" mode="md">
+      </ion-back-button>
+    </ion-buttons>
+    <ion-thumbnail slot="end" style="padding-top: 8px; padding-right: 8px;">
+      <ion-icon name="pencil" size="large" color="warning"></ion-icon>
+    </ion-thumbnail>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="bg">
+  <ion-card class="bgLeccionario rounded">
+    <ion-button expand="block" shape="round" class="ion-margin" color="tertiary" routerLink="/inicio/leccionario/ingresar-leccionario">Ingresar Leccionario</ion-button>
+    <ion-button expand="block" shape="round" class="ion-margin" color="success"routerLink="/inicio/leccionario/ver-leccionario">Ver Leccionario</ion-button>
+
+  </ion-card>
+
+</ion-content>

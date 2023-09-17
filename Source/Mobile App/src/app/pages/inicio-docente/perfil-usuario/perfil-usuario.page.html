@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <img (click)="irInicioDocente()" class="rounded" src="/assets/icon/logoAulaapp.png" width="50" height="50" slot="start" >
+    <ion-title slot="start" class="ion-margin titlePerfil" style="font-size: 20px;">PERFIL USUARIO <ion-icon name="person-circle-outline" size="large" color="medium" class="ion-margin-top"></ion-icon></ion-title>
+    <ion-button (click)="refresh()"slot="end" fill="solid" color="dark">
+      <ion-icon  style="text-align:right;" name="refresh-outline"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content class="bg">
+  <ion-item-group><br>
+    <ion-label class="lbl_nombre" *ngFor= "let x of lista" style="text-align:center">{{x.nombreCompleto}}</ion-label>
+    <ion-label class="lbl_rol" *ngFor= "let x of lista" style="text-align:center"><br> {{x.rolUsuario}}</ion-label>
+  </ion-item-group>
+    
+  <ion-card class="bgPerfil rounded">
+
+    <ion-card-content>
+      
+      <ion-item color="light" detail button (click)="recuperarContrasena()">
+        Modificar Contraseña
+      </ion-item>
+      
+      <!-- <ion-item detail button (click)="tomarFoto()">
+        Modificar imagen de perfil
+      </ion-item> -->
+      <ion-item color="light" detail button (click)="mostrarInfoSobre()">
+        Sobre AulaApp
+      </ion-item>
+            
+      <ion-item color="danger" detail (click)="logOut()">
+        Cerrar sesión
+      </ion-item>
+
+    </ion-card-content>
+  </ion-card>
+  <ion-button size="small" fill="solid" expand="full" shape="round" class="botonAtras" color="tertiary" (click)="atras()">Atrás</ion-button> 
+
+</ion-content>

@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <img (click)="irInicioDocente()" class="rounded" src="/assets/icon/logoAulaapp.png" width="50" height="50" slot="start" >
+    <ion-title slot="start" class="titleIngresarLeccionario" style="font-size: 20px;">Ingresar Leccionario <ion-icon name="pencil-sharp" size="large" color="warning"></ion-icon></ion-title>
+    <ion-button (click)="refresh()"slot="end" fill="solid" color="dark">
+      <ion-icon style="text-align:right;" name="refresh-outline"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content class="bg">
+  <ion-card class="bgIngresarLeccionario rounded">
+
+    <ion-item class="ion-margin rounded">
+      <ion-label position="stacked">Objetivo de la clase</ion-label>
+      <ion-textarea placeholder="Ingrese el texto aquí..." [(ngModel)]="txt_descLeccionario"></ion-textarea>
+    </ion-item>
+
+    <ion-button expand="full" shape="round" class="ion-margin" (click)="confirmaLeccionario()" color="success">Confirmar</ion-button>
+    
+  </ion-card>
+  <ion-button expand="block" shape="round" class="botonAtras" color="tertiary" (click)="atras()">Atrás</ion-button>
+</ion-content>

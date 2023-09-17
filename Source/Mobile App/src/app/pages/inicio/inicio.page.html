@@ -1,0 +1,74 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-title class=" titleInicio" style="text-align:left; font-size: 20px;">Inicio</ion-title>
+    <img src="/assets/image/logo2.png" width="50" height="50" slot="start" >
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="bg">
+  <ion-chip class="ion-margin" (click)="mostrarPerfilUsuario()">
+    <ion-avatar>
+      <ion-icon name="person" size="large" color="medium"></ion-icon>
+    </ion-avatar>
+    <ion-label  *ngFor= "let x of lista">{{x.nombreCompleto}}</ion-label>
+  </ion-chip >
+
+
+  <ion-card class="apps-card bgInicio rounded">
+    <ion-card-header>
+      <ion-card-title style="text-align: center; " *ngFor= "let x of lista">Bienvenid@ <b>{{x.codigoUsuario}}</b></ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item detail button (click)="irAsistencia()">
+          <ion-thumbnail slot="start" style="padding-top: 8px;">
+            <ion-icon name="checkmark" size="large" color="success"></ion-icon>
+          </ion-thumbnail>
+          <ion-card-title>
+            Asistencia            
+          </ion-card-title>
+        </ion-item>
+
+        <ion-item detail button (click)="irLeccionario()">
+          <ion-thumbnail slot="start" style="padding-top: 8px;">
+            <ion-icon name="pencil" size="large" color="warning"></ion-icon>
+          </ion-thumbnail>
+          <ion-card-title>
+            Leccionario
+          </ion-card-title>
+        </ion-item>
+
+        <ion-item detail button (click)="irHojaDeVida()">
+          <ion-thumbnail slot="start" style="padding-top: 8px;">
+            <ion-icon name="newspaper" size="large" color="medium"></ion-icon>
+          </ion-thumbnail>
+          <ion-card-title>
+            Hoja de Vida
+          </ion-card-title>
+        </ion-item>
+
+        <ion-item detail button (click)="irNotas()">
+          <ion-thumbnail slot="start" style="padding-top: 8px;">
+            <ion-icon name="stats-chart" size="large" color="primary"></ion-icon>
+          </ion-thumbnail>
+          <ion-card-title>
+            Notas
+          </ion-card-title>
+        </ion-item>
+
+        <ion-item detail button (click)="irHorarios()">
+          <ion-thumbnail slot="start" style="padding-top: 8px;">
+            <ion-icon name="alarm" size="large" color="secondary"></ion-icon>
+          </ion-thumbnail>
+          <ion-card-title>
+            Horarios
+          </ion-card-title>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+  
+
+
+
+</ion-content>

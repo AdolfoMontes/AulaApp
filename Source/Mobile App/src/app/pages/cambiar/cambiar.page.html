@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <img class="rounded" src="/assets/image/logo2.png" width="50" height="50" slot="start" >
+    <ion-title slot="start" class="ion-margin titleCambiar" style="font-size: 20px;">Cambiar</ion-title>
+    <ion-button (click)="refresh()" slot="end" fill="solid" color="dark">
+      <ion-icon style="text-align:right;" name="refresh-outline"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content class="bg">
+  <div>
+    <form class="custom-form bgCambiar" method="post">
+      <ion-label>Ingrese datos</ion-label>
+      <input
+        type="password"
+        [(ngModel)]="usuarioFormCambiar.password"
+        name="password"
+        placeholder="Contraseña Actual"
+        required="required"
+        maxlength="25"
+      />
+      <input
+        type="password"
+        [(ngModel)]="usuarioFormCambiar.nueva_password"
+        name="nueva_password"
+        placeholder="Nueva Contraseña"
+        required="required"
+        maxlength="25"
+      />
+      <input
+        type="password"
+        [(ngModel)]="usuarioFormCambiar.conf_nueva_password"
+        name="conf_nueva_password"
+        placeholder="Repita Nueva Contraseña"
+        required="required"
+        maxlength="25"
+      />
+      <button type="submit" (click)="cambiarContrasena()">Cambiar</button>
+    </form>
+  </div>
+  
+  <ion-button size="small" fill="solid" expand="full" shape="round" class="ion-padding botonAtras" color="tertiary" (click)="atras()">Atrás</ion-button> 
+
+</ion-content>

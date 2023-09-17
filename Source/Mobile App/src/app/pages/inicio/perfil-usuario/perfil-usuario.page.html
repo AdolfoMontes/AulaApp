@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-title class="titlePerfil"style="text-align: right;font-size: 20px;">Perfil del Usuario</ion-title>
+    <ion-buttons slot="start" >
+      <ion-back-button defaultHref="/" color="light" mode="md">
+      </ion-back-button>
+    </ion-buttons>
+    <ion-thumbnail slot="end" style="padding-top: 8px; padding-right: 8px;">
+      <ion-icon name="person-circle-outline" color="medium "size="large"></ion-icon>
+    </ion-thumbnail>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content class="bg">
+  <ion-item-group><br>
+    <ion-label class="lbl_nombre" *ngFor= "let x of lista" style="text-align:center">{{x.nombreCompleto}}</ion-label>
+    <ion-label class="lbl_rol" *ngFor= "let x of lista" style="text-align:center"><br> {{x.rolUsuario}}</ion-label>
+  </ion-item-group>
+    
+  <ion-card class="bgPerfil">
+
+    <ion-card-content>
+      
+      <ion-item color="light" detail button (click)="recuperarContrasena()">
+        Modificar Contraseña
+      </ion-item>
+      
+      <!-- <ion-item detail button (click)="tomarFoto()">
+        Modificar imagen de perfil
+      </ion-item> -->
+      <ion-item color="light" detail button (click)="mostrarInfoSobre()">
+        Sobre AulaApp
+      </ion-item>
+            
+      <ion-item color="danger" detail (click)="logOut()">
+        Cerrar sesión
+      </ion-item>
+
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

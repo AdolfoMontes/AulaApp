@@ -1,0 +1,119 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-title class="titleVerLeccionario" style="text-align: right; font-size: 20px;">Ver Leccionario</ion-title>
+    <ion-buttons slot="start" >
+      <ion-back-button defaultHref="/" color="light" mode="md">
+
+      </ion-back-button>
+    </ion-buttons>
+    <ion-thumbnail slot="end" style="padding-top: 8px; padding-right: 8px;">
+      <ion-icon name="pencil" size="large"color="warning"></ion-icon>
+    </ion-thumbnail>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="bg">
+  <ion-card class="bgVerLeccionario rounded">
+    <ion-item id="open-modal" class="ion-margin rounded" detail>
+      <ion-icon icon="calendar-outline" slot ="start"></ion-icon>
+      <ion-label>Fecha</ion-label>
+      <ion-text slot="end">{{formato}}</ion-text>
+    </ion-item>
+
+    <ion-modal trigger="open-modal" class="ion-modal bg">
+      <ng-template>
+        <ion-content class="ion-content-fecha">
+          <ion-datetime #datetime presentation="datetime" [value]="dateValue" size="cover"(ionChange)="fechaCambiada(datetime.value)"(ionCancel)="mostrarPickerFecha = false;">
+            <ion-buttons slot="buttons">
+              <ion-button (click)="cerrar()" color="danger">Cerrar</ion-button>
+              <ion-button (click)="seleccionar()">Seleccionar</ion-button>
+            </ion-buttons>
+          </ion-datetime>
+        </ion-content>
+      </ng-template>
+    </ion-modal>
+
+    <ion-item class="ion-margin rounded" *ngIf="mostrarNivel">
+      <ion-label>Nivel</ion-label>
+      <ion-select name ="select_nivel" [(ngModel)]="mdl_nivel" (ionChange)="onChange(obtenerCursoApi())" >
+        <ion-select-option *ngFor="let nivel of listaNivel" [value]="nivel.ID_NIVEL">{{nivel.DESCRIPCION}} </ion-select-option>
+      </ion-select>
+      
+    </ion-item>
+    
+    <ion-item class="ion-margin rounded" *ngIf="mostrarCurso">
+      <ion-label>Curso</ion-label>
+      <ion-select name ="select_curso" [(ngModel)]="mdl_curso" (ionChange)="onChange(obtenerAsignaturaApi())" >
+        <ion-select-option *ngFor="let curso of listaCursos" [value]="curso.ID_CURSO">{{curso.COMPUESTO}}</ion-select-option>
+      </ion-select>
+  
+    </ion-item>
+
+    <ion-item class="ion-margin rounded" *ngIf="mostrarAsignatura">
+      <ion-label>Asignatura</ion-label>
+      <ion-select [(ngModel)]="mdl_asignatura" (ionChange)="onChange(obtenerLeccionario())">
+        <ion-select-option *ngFor="let atrib of listaAsignatura" [value]="atrib.ID_ASIGNATURA">{{atrib.NOM_ASIGNATURA}}</ion-select-option>
+      </ion-select>   
+    </ion-item>
+
+
+    <ion-button [disabled]="isEnabled" expand="full" shape="round" class="ion-margin" id="open-modal-leccionario" color="success">Ver Leccionario</ion-button>
+
+    <ion-modal trigger="open-modal-leccionario" #modalhdv>
+      <ng-template>
+        <ion-content>
+          <ion-grid class="ion-text-center">
+  
+            <ion-row class="ion-margin">
+              <ion-col>
+                <ion-title>
+                  <ion-text color="default" *ngFor="let x of listaCursos">
+                    {{x.COMPUESTO}}
+                  </ion-text><br>
+                  <ion-label *ngFor="let x of listaLeccionario">{{x.NOM_ASIGNATURA}}</ion-label>
+                </ion-title>
+              </ion-col>
+            </ion-row>
+        
+            <ion-row class="header-row" >
+              <ion-col>
+                <ion-text><b>Nombre Asignatura</b></ion-text>
+              </ion-col>
+        
+              <ion-col>
+                <ion-text><b>Fecha</b></ion-text>
+              </ion-col>
+              <ion-col>
+                <ion-text><b>Descripción</b></ion-text>
+              </ion-col>
+              
+            </ion-row>
+  
+            <ion-row *ngFor="let x of listaLeccionario">
+              <ion-col class="ion-text-center">
+                <ion-text >
+                    {{x.NOMBREASIGNATURA}}
+                </ion-text>
+              </ion-col>
+          
+                <ion-col class="ion-text-center"> 
+                  <ion-text >
+                    {{x.FECHALECCION}}
+                  </ion-text>
+                </ion-col>
+                <ion-col class="ion-text-center"> 
+                  <ion-text >
+                    {{x.DESCRIPCIONLECCION}}
+                  </ion-text>
+                </ion-col>
+  
+            </ion-row> 
+          </ion-grid>
+  
+          <ion-button  color="danger" (click)="cerrarModal()" class="ion-margin" expand="full" shape="round">Cerrar</ion-button>
+        </ion-content>
+      </ng-template>
+    </ion-modal>
+
+  </ion-card>
+</ion-content>

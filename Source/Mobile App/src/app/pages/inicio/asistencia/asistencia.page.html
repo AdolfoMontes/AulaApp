@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-title class="titleAsistencia" style="text-align: right; font-size: 20px;">Asistencia</ion-title>
+    <ion-buttons slot="start" >
+      <ion-back-button defaultHref="/" color="light" mode="md">
+
+      </ion-back-button>
+    </ion-buttons>
+    <ion-thumbnail slot="end" style="padding-top: 8px; padding-right: 8px;">
+      <ion-icon name="checkmark" size="large" color="success"></ion-icon>
+    </ion-thumbnail>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content class="bg">
+  <ion-card class="bgAsistencia rounded">
+    <ion-button expand="block" shape="round" class="ion-margin" color="tertiary" routerLink="/inicio/asistencia/ingresar-asistencia">Ingresar Asistencia</ion-button>
+    <ion-button expand="block" shape="round" class="ion-margin" color="success"routerLink="/inicio/asistencia/ver-asistencia">Ver Asistencia</ion-button>
+
+  </ion-card>
+
+</ion-content>

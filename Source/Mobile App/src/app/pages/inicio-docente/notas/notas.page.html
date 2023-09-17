@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <img (click)="irInicioDocente()" class="rounded" src="/assets/icon/logoAulaapp.png" width="50" height="50" slot="start" >
+    <ion-title slot="start" class="ion-margin titleNotas" style="font-size: 20px;">NOTAS <ion-icon name="stats-chart" size="large" color="primary"></ion-icon></ion-title>
+    <ion-button (click)="refresh()"slot="end" fill="solid" color="dark">
+      <ion-icon style="text-align:right;" name="refresh-outline"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content class="bg">
+  <ion-card class="bgNotas rounded">
+    <ion-button expand="block" shape="round" class="ion-margin" color="success" (click)="ingresarNotas()">Ingresar Notas</ion-button>
+    
+    <ion-button expand="block" shape="round" class="ion-margin" color="warning" (click)="verNotas()">Ver Notas</ion-button>
+  </ion-card>
+    
+  <ion-button expand="block" shape="round" class="botonAtras" color="tertiary" (click)="atras()">Atrás</ion-button>  
+
+</ion-content>

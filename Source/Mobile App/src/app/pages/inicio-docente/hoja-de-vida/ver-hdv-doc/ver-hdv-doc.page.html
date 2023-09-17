@@ -1,0 +1,72 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <img (click)="irInicioDocente()" class="rounded" src="/assets/icon/logoAulaapp.png" width="50" height="50" slot="start" >
+    <ion-title slot="start" class="titleVerHdv" style="font-size: 20px;">Hoja de vida <ion-icon name="newspaper" size="large" color="medium"></ion-icon></ion-title>
+    <ion-button (click)="refresh()"slot="end" fill="solid" color="dark">
+      <ion-icon  style="text-align:right;" name="refresh-outline"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="bg">
+  <ion-card class="bgVerHdv rounded">
+    <ion-card-title class="ion-margin"><b>Seleccione Alumno</b></ion-card-title>
+    <ion-item class="ion-margin rounded" *ngIf="mostrarAlumno">
+      <ion-label>Alumno</ion-label>
+      <ion-select class="select" cancelText="Cancelar" okText="Aceptar" name ="select_alumno" [(ngModel)]="mdl_alumno" (ionChange)="onChangeAlumno()">
+        <ion-select-option *ngFor="let x of listaAlumnos" [value]="x.RUNALUMNO">{{x.NOMBREALUMNO}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-card>
+
+  <ion-card class="bgCardObs rounded" *ngIf="mostrarCardObs">
+    <ion-grid class="ion-text-center lines">
+
+      <ion-row class="ion-margin">
+        <ion-col class="bordesCol">
+          <ion-title>
+            <!-- <ion-text class="ion-text-wrap"color="default" *ngFor="let x of listaObservacion"> -->
+            <ion-text class="ion-text-wrap" color="dark">
+              <!-- Observaciones {{x.NOMBREALUMNO}}  -->
+              <b>Observaciones</b>  
+
+            </ion-text>
+          </ion-title>
+        </ion-col>
+      </ion-row>
+  
+      <ion-row class="ion-margin header-row">
+        <ion-col>
+          <ion-text class="titleObs">Tipo</ion-text>
+        </ion-col>
+  
+        <ion-col>
+          <ion-text class="titleObs">Observación</ion-text>
+        </ion-col>
+      </ion-row>
+  
+      
+      <ion-row class="ion-margin bordesRow" *ngFor="let x of listaObservacion">
+        <ion-col>
+          <ion-text>
+              {{x.TIPO}}
+              
+          </ion-text>
+        </ion-col>
+
+        <ion-col class="ion-text-left">
+          <ion-text >
+              <b>{{x.FECHA_INS}}</b> - {{x.DESCRIPCION_OBSERVACION}}
+              
+          </ion-text>
+        </ion-col>
+      </ion-row>
+        
+    </ion-grid>
+  </ion-card>
+  <ion-button expand="block" shape="round" class="botonAtras" color="tertiary" (click)="atras()">Atrás</ion-button>
+  
+
+  
+
+</ion-content>
